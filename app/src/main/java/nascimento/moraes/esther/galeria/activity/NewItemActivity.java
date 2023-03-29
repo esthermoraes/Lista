@@ -1,8 +1,10 @@
-package nascimento.moraes.esther.galeria;
+package nascimento.moraes.esther.galeria.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import nascimento.moraes.esther.galeria.R;
 
 public class NewItemActivity extends AppCompatActivity {
 
