@@ -41,16 +41,16 @@ public class NewItemActivity extends AppCompatActivity {
         btnAddItem.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                if (photoSelected == null)
+                if (photoSelected == null){
                     Toast.makeText(NewItemActivity.this, "É necessário selecionar uma imagem!", Toast.LENGTH_LONG).show();
-                return;
+                    return;
             }
 
             EditText etTitle = findViewById(R.id.etTitle);
             String title = etTitle.getText().toString();
             if (title.isEmpty()){
                 Toast.makeText(NewItemActivity.this, "É necessário inserir um título", Toast.LENGTH_LONG).show();
-            return;
+                return;
             }
         }
     }
