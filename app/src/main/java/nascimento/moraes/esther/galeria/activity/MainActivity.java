@@ -1,6 +1,9 @@
 package nascimento.moraes.esther.galeria.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nascimento.moraes.esther.galeria.R;
+import nascimento.moraes.esther.galeria.adapter.MyAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,15 +33,31 @@ public class MainActivity extends AppCompatActivity {
                 myItem.description = data.getStringExtra("description");
                 myItem.photo = data.getData();
                 itens.add(myItem);
+                myAdapter.notifyItemInserted(itens.size()-1);
             }
         }
     }
 
+    MyAdapter myAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FloatingActionButton fabAddItem = findViewById(R.id.fabAddNewItem);
+
+        RecyclerView rvItens = findViewById(R.id.rvItens);
+
+        myAdapter = new MyAdapter(this, itens);
+        rvItens.setAdapter(myAdapter);
+
+        rvItens.setHasFixedSize(true);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        rvItens.setLayoutManager(layoutManager);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvItens.getContext(), DividerItemDecoration.VERTICAL);
+        rvItens.addItemDecoration(dividerItemDecoration);
+
         fabAddItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
