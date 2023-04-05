@@ -20,7 +20,7 @@ import nascimento.moraes.esther.galeria.adapter.MyAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
-    static int NEW_ITEM_REQUEST =1;
+    static int NEW_ITEM_REQUEST = 1;
     List<MyItem> itens = new ArrayList<>();
 
     @Override
