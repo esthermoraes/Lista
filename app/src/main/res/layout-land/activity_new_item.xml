@@ -26,8 +26,7 @@
         android:layout_marginBottom="8dp"
         android:tint="#673AB7"
         app:layout_constraintBottom_toTopOf="@+id/btnAddItem"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.198"
+        app:layout_constraintEnd_toStartOf="@+id/etDesc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imvPhotoPreview"
         app:layout_constraintVertical_bias="0.352"
@@ -35,8 +34,9 @@
 
     <EditText
         android:id="@+id/etTitle"
-        android:layout_width="403dp"
-        android:layout_height="40dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
@@ -45,29 +45,33 @@
         android:textColor="#A375F6"
         android:textColorHint="#673AB7"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imvPhotoPreview"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etDesc"
-        android:layout_width="405dp"
-        android:layout_height="270dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:gravity="top"
         android:hint="Descrição"
         android:inputType="textPersonName"
         android:textColor="#A375F6"
         android:textColorHint="#673AB7"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddItem"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imvPhotoPreview"
         app:layout_constraintTop_toBottomOf="@+id/etTitle" />
 
     <Button
         android:id="@+id/btnAddItem"
-        android:layout_width="714dp"
-        android:layout_height="47dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="#673AB7"
@@ -75,7 +79,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDesc"
-        app:layout_constraintVertical_bias="0.733" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

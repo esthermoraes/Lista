@@ -1,4 +1,4 @@
-package nascimento.moraes.esther.galeria.activity;
+package nascimento.moraes.esther.lista.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -15,8 +15,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-import nascimento.moraes.esther.galeria.R;
-import nascimento.moraes.esther.galeria.adapter.MyAdapter;
+import nascimento.moraes.esther.lista.R;
+import nascimento.moraes.esther.lista.adapter.MyAdapter;
 
 public class MainActivity extends AppCompatActivity {
 

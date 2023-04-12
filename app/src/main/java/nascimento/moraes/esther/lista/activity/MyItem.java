@@ -1,4 +1,4 @@
-package nascimento.moraes.esther.galeria.activity;
+package nascimento.moraes.esther.lista.activity;
 
 import android.net.Uri;
 

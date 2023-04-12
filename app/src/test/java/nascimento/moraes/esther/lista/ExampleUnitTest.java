@@ -1,4 +1,4 @@
-package nascimento.moraes.esther.galeria;
+package nascimento.moraes.esther.lista;
 
 import org.junit.Test;
 

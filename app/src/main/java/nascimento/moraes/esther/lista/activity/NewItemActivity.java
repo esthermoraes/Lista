@@ -1,4 +1,4 @@
-package nascimento.moraes.esther.galeria.activity;
+package nascimento.moraes.esther.lista.activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import nascimento.moraes.esther.galeria.R;
+import nascimento.moraes.esther.lista.R;
 
 public class NewItemActivity extends AppCompatActivity {
 

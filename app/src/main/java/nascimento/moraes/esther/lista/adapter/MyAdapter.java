@@ -1,4 +1,4 @@
-package nascimento.moraes.esther.galeria.adapter;
+package nascimento.moraes.esther.lista.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,15 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import nascimento.moraes.esther.galeria.R;
-import nascimento.moraes.esther.galeria.activity.MainActivity;
-import nascimento.moraes.esther.galeria.activity.MyItem;
+import nascimento.moraes.esther.lista.R;
+import nascimento.moraes.esther.lista.activity.MainActivity;
+import nascimento.moraes.esther.lista.activity.MyItem;
 
 public class MyAdapter extends RecyclerView.Adapter {
     MainActivity mainActivity;
     List<MyItem> itens;
 
     public MyAdapter(MainActivity mainActivity, List<MyItem> itens){
+        this.mainActivity = mainActivity;
         this.itens = itens;
     }
 

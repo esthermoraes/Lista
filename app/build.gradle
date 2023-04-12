@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'nascimento.moraes.esther.galeria'
+    namespace 'nascimento.moraes.esther.lista'
     compileSdk 33
 
     defaultConfig {
-        applicationId "nascimento.moraes.esther.galeria"
+        applicationId "nascimento.moraes.esther.lista"
         minSdk 24
         targetSdk 33
         versionCode 1

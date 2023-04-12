@@ -1,4 +1,4 @@
-package nascimento.moraes.esther.galeria.adapter;
+package nascimento.moraes.esther.lista.adapter;
 
 import android.view.View;
 
