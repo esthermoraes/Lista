@@ -42,7 +42,8 @@
         android:ems="10"
         android:hint="Título"
         android:inputType="textPersonName"
-        android:textColorHint="#F44336"
+        android:textColor="#A375F6"
+        android:textColorHint="#673AB7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,7 +57,8 @@
         android:gravity="top"
         android:hint="Descrição"
         android:inputType="textPersonName"
-        android:textColorHint="#F44336"
+        android:textColor="#A375F6"
+        android:textColorHint="#673AB7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etTitle" />
 

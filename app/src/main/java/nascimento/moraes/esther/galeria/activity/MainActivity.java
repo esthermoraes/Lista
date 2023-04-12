@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     static int NEW_ITEM_REQUEST = 1;
     List<MyItem> itens = new ArrayList<>();
 
+    MyAdapter myAdapter;
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
@@ -38,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    MyAdapter myAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
