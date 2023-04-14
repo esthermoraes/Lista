@@ -73,7 +73,7 @@ public class NewItemActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == PHOTO_PICKER_REQUEST){ // O requestCode mostra qual é a chamada da startActivityForResult, refere-se a resposta; Nesse APP, tem id PHOTO_PICKER_REQUEST
-            if(resultCode == Activity.RESULT_OK){ // O resultCode mostre se ouve sucesso no retorno da Activity de destino
+            if(resultCode == Activity.RESULT_OK){ // O resultCode mostre se ouve sucesso no retorno da Activity de destino | O RESULT_OK indica que há dados
                 photoSelected = data.getData(); // O data é uma intent que contém os dados retornados da Activity de destino
                 ImageView imvPhotoPreview = findViewById(R.id.imvPhotoPreview); // A ImageView é um componente usado para exibição de imagens; Nessa APP, exibe a imagem escolhida pelo usuario em sua galeria
                 imvPhotoPreview.setImageURI(photoSelected);
