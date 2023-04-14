@@ -20,7 +20,7 @@ import nascimento.moraes.esther.lista.adapter.MyAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
-    static int NEW_ITEM_REQUEST = 1;
+    static int NEW_ITEM_REQUEST = 1; //A static int serve para manter o seu valor entre as chamadas de função | Já o NEW_ITEM_REQUEST é um identificador da chamada do metodo startActivityForResult, pois ele pode ser chamado várias vezes e é necessário identificar e diferenciar cada chamada
     List<MyItem> itens = new ArrayList<>();
 
     MyAdapter myAdapter;
@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FloatingActionButton fabAddItem = findViewById(R.id.fabAddNewItem);
+        FloatingActionButton fabAddItem = findViewById(R.id.fabAddNewItem);// O FloatingActionButton é um tipo de botão, que pode ser colocado acima ("flutua") de outros elementos de UI
 
-        RecyclerView rvItens = findViewById(R.id.rvItens);
+        RecyclerView rvItens = findViewById(R.id.rvItens); //A Recycle View permite a exibição de itens em uma lista, "reciclando" os itens e fazendo com que otimize a memório do celular
 
         myAdapter = new MyAdapter(this, itens);
         rvItens.setAdapter(myAdapter);
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, NewItemActivity.class);
-                startActivityForResult(i, NEW_ITEM_REQUEST);
+                startActivityForResult(i, NEW_ITEM_REQUEST); // o método startActivityForResult assume que a Activity de destino (no caso a NewItemAcitivity) vai retornar os dados em para a Activity inicial ( no caso a MainActivity)
             }
         });
     }
