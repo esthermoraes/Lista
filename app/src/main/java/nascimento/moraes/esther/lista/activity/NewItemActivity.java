@@ -2,6 +2,7 @@ package nascimento.moraes.esther.lista.activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,18 +16,26 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import nascimento.moraes.esther.lista.R;
+import nascimento.moraes.esther.lista.model.NewItemActivityViewModel;
 
 public class NewItemActivity extends AppCompatActivity {
 
     static int PHOTO_PICKER_REQUEST = 1; // A static int serve para manter o seu valor entre as chamadas de função
-    Uri photoSelected = null; // Esssa variavel do tipo Uri (é o endereço para um dado que não está  dentro do espaço do APP, mas sim no de outras APP's) guarda o endereço da foto escolhida pelo usuario
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_item);
 
+        NewItemActivityViewModel vm = new ViewModelProvider( this ).get(NewItemActivityViewModel.class );
+
         ImageButton imgCI = findViewById(R.id.imbCI); // O ImageButton é um tipo de botão, que ao ser "clicado" tem como resposta uma imagem; Nessa APP, esse butão  abre a galeria do celular para que o usuario escolha uma imagem
+
+        Uri selectPhotoLocation = vm.getSelectPhotoLocation();
+        if(selectPhotoLocation != null) {
+            ImageView imvfotoPreview = findViewById(R.id.imvPhotoPreview);
+            imvfotoPreview.setImageURI(selectPhotoLocation);
+        }
         imgCI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,7 +50,9 @@ public class NewItemActivity extends AppCompatActivity {
         btnAddItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (photoSelected == null) {
+                Uri selectPhotoLocation = vm.getSelectPhotoLocation();
+
+                if (selectPhotoLocation == null) {
                     Toast.makeText(NewItemActivity.this, "É necessário selecionar uma imagem!", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -61,7 +72,7 @@ public class NewItemActivity extends AppCompatActivity {
                 }
 
                 Intent i = new Intent(); // Pegando o parametro e passando ele de ação para poder enviar para alguem
-                i.setData(photoSelected); //Indicando que seja respondido atraves do photoSelected
+                i.setData(selectPhotoLocation); //Indicando que seja respondido atraves do photoSelected
                 i.putExtra("title", title);
                 i.putExtra("description", description);
                 setResult(Activity.RESULT_OK, i);
@@ -74,9 +85,12 @@ public class NewItemActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == PHOTO_PICKER_REQUEST){ // O requestCode mostra qual é a chamada da startActivityForResult, refere-se a resposta; Nesse APP, tem id PHOTO_PICKER_REQUEST
             if(resultCode == Activity.RESULT_OK){ // O resultCode mostre se ouve sucesso no retorno da Activity de destino | O RESULT_OK indica que há dados
-                photoSelected = data.getData(); // O data é uma intent que contém os dados retornados da Activity de destino
+                Uri photoSelected = data.getData(); // O data é uma intent que contém os dados retornados da Activity de destino
                 ImageView imvPhotoPreview = findViewById(R.id.imvPhotoPreview); // A ImageView é um componente usado para exibição de imagens; Nessa APP, exibe a imagem escolhida pelo usuario em sua galeria
                 imvPhotoPreview.setImageURI(photoSelected);
+
+                NewItemActivityViewModel vm = new ViewModelProvider( this).get(NewItemActivityViewModel.class );
+                vm.setSelectPhotoLocation(photoSelected);
             }
         }
     }

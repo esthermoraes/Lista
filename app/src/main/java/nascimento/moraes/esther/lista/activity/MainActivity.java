@@ -1,22 +1,28 @@
 package nascimento.moraes.esther.lista.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 import nascimento.moraes.esther.lista.R;
 import nascimento.moraes.esther.lista.adapter.MyAdapter;
+import nascimento.moraes.esther.lista.model.MainActivityViewModel;
+import nascimento.moraes.esther.lista.util.Util;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +39,19 @@ public class MainActivity extends AppCompatActivity {
                 MyItem myItem = new MyItem();
                 myItem.title = data.getStringExtra("title");
                 myItem.description = data.getStringExtra("description");
-                myItem.photo = data.getData();
+                Uri selectedPhotoURI = data.getData();
+
+                try {
+                    Bitmap photo = Util.getBitmap(MainActivity.this, selectedPhotoURI, 100, 100);
+                    myItem.photo = photo;
+                }
+                catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                MainActivityViewModel vm = new ViewModelProvider( this ).get(MainActivityViewModel.class );
+                List<MyItem> itens = vm.getItens();
+
                 itens.add(myItem);
                 myAdapter.notifyItemInserted(itens.size()-1);
             }
@@ -47,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fabAddItem = findViewById(R.id.fabAddNewItem);// O FloatingActionButton é um tipo de botão, que pode ser colocado acima ("flutua") de outros elementos de UI
 
         RecyclerView rvItens = findViewById(R.id.rvItens); //A Recycle View permite a exibição de itens em uma lista, "reciclando" os itens e fazendo com que otimize a memório do celular
+
+        MainActivityViewModel vm = new ViewModelProvider( this ).get(MainActivityViewModel.class);
+        List<MyItem> itens = vm.getItens();
 
         myAdapter = new MyAdapter(this, itens);
         rvItens.setAdapter(myAdapter);
